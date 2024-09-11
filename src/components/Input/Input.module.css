@@ -1,0 +1,29 @@
+input {
+	border-color: #d1d1d6;
+	border-style: solid;
+	width: 240px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	border-width: 1px;
+}
+input::placeholder {
+	color: #70707b;
+}
+input:hover {
+	border-color: #d1d1d6;
+}
+input:focus {
+	outline: none;
+	border-color: #84caff;
+	box-shadow: 0px 0px 0px 4px #2e90fa3d;
+}
+input.error:hover,
+.error {
+	border-color: #fda29b;
+}
+.error:focus {
+	box-shadow: 0px 0px 0px 4px #f044383d;
+}
+input:disabled::placeholder {
+	color: #d1d1d6;
+}
