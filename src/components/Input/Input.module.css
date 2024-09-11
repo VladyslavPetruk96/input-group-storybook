@@ -1,7 +1,11 @@
+.wrapper {
+	width: 323px;
+	position: relative;
+}
 input {
 	border-color: #d1d1d6;
 	border-style: solid;
-	width: 240px;
+	width: 100%;
 	border-radius: 4px;
 	box-sizing: border-box;
 	border-width: 1px;
@@ -26,4 +30,18 @@ input.error:hover,
 }
 input:disabled::placeholder {
 	color: #d1d1d6;
+}
+.icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.help__icon {
+	left: 12px;
+}
+.search__icon {
+	right: 54px;
+}
+.shortkey__icon {
+	right: 12px;
 }

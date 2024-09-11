@@ -26,6 +26,21 @@ const meta: Meta<StoryProps> = {
 				type: "text",
 			},
 		},
+		iconBefore: {
+			control: {
+				type: "boolean",
+			},
+		},
+		iconAfter: {
+			control: {
+				type: "boolean",
+			},
+		},
+		shortkey: {
+			control: {
+				type: "boolean",
+			},
+		},
 	},
 };
 
@@ -39,5 +54,8 @@ export const Md: Story = {
 		alignment: "left",
 		border: true,
 		placeholder: "email...",
+		iconBefore: true,
+		iconAfter: true,
+		shortkey: true,
 	},
 };
