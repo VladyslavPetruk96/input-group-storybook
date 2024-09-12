@@ -1,0 +1,40 @@
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+.icon__wrapper {
+	position: relative;
+	align-items: center;
+	display: flex;
+	margin-left: 5px;
+}
+.tooltip {
+	position: absolute;
+	background-color: #131316;
+	border-radius: 7px;
+	padding: 8px 12px;
+	color: #ffffff;
+	bottom: 22px;
+	width: max-content;
+	right: 50%;
+	transform: translateX(50%);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s, visibility 0.3s;
+}
+
+.tooltip::after {
+	content: "";
+	position: absolute;
+	border: 14px solid transparent;
+	border-top: 10px solid #131316;
+	top: 88%;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.icon__wrapper:hover .tooltip {
+	opacity: 1;
+	visibility: visible;
+}
