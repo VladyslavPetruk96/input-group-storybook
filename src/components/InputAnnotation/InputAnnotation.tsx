@@ -2,12 +2,12 @@ import { CSSProperties } from "react";
 
 type InputAnnotationProps = {
 	hint?: boolean;
-	text?: string;
+	text: string;
 };
 
-const InputAnnotation = ({
+export const InputAnnotation = ({
 	hint = true,
-	text = "This is a hint text to help user.",
+	text,
 }: InputAnnotationProps) => {
 	const textStyles: CSSProperties = hint
 		? { display: "block" }
@@ -15,5 +15,3 @@ const InputAnnotation = ({
 
 	return <p style={{ ...textStyles }}>{text}</p>;
 };
-
-export default InputAnnotation;

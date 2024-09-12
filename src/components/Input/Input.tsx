@@ -1,4 +1,4 @@
-import { ChangeEvent, CSSProperties, ReactNode, useState } from "react";
+import { CSSProperties, ReactNode, useState } from "react";
 import helpIcon from "../../assets/help.svg";
 import searchIcon from "../../assets/search.svg";
 import shortkeyIcon from "../../assets/shortkey.svg";
@@ -12,7 +12,7 @@ type InputProps = {
 	iconAfter?: ReactNode;
 	shortkey?: ReactNode;
 	placeholder?: string;
-	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	onChange: (value: string) => void;
 	inputValue: string;
 };
 
@@ -29,6 +29,10 @@ export const Input = ({
 }: InputProps) => {
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState(false);
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		onChange(event.target.value);
+	};
 
 	const sizeStyles: Record<NonNullable<InputProps["size"]>, CSSProperties> = {
 		sm: {
@@ -85,7 +89,7 @@ export const Input = ({
 		<div className={styles.wrapper}>
 			<input
 				type="text"
-				onChange={onChange}
+				onChange={handleChange}
 				value={inputValue}
 				disabled={disabled}
 				className={`${styles.input} ${error ? styles.error : ""} ${

@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ComponentProps } from "react";
-import InputAnnotation from "../components/InputAnnotation/InputAnnotation";
+import { InputAnnotation } from "../components/InputAnnotation/InputAnnotation";
 
 type StoryProps = ComponentProps<typeof InputAnnotation>;
 const meta: Meta<StoryProps> = {
 	component: InputAnnotation,
+	tags: ["autodocs"],
 	argTypes: {
 		hint: {
 			control: {

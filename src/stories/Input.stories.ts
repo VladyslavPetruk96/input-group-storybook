@@ -5,6 +5,7 @@ import { Input } from "../components/Input/Input";
 type StoryProps = ComponentProps<typeof Input>;
 const meta: Meta<StoryProps> = {
 	component: Input,
+	tags: ["autodocs"],
 	argTypes: {
 		size: {
 			control: {

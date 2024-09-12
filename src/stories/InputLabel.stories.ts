@@ -1,11 +1,17 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { ComponentProps } from "react";
-import InputLabel from "../components/InputLabel/InputLabel";
+import { InputLabel } from "../components/InputLabel/InputLabel";
 
 type StoryProps = ComponentProps<typeof InputLabel>;
 const meta: Meta<StoryProps> = {
 	component: InputLabel,
+	tags: ["autodocs"],
 	argTypes: {
+		size: {
+			control: {
+				type: "select",
+			},
+		},
 		iconInfo: {
 			control: {
 				type: "boolean",
@@ -27,5 +33,6 @@ export const InfoIcon: Story = {
 	args: {
 		labelName: "Email",
 		iconInfo: true,
+		size: "md",
 	},
 };

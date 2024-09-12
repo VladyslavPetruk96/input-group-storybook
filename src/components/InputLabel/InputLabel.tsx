@@ -5,19 +5,39 @@ import styles from "./InputLabel.module.css";
 type InputLabelProps = {
 	labelName: string;
 	iconInfo?: ReactNode;
+	size?: "sm" | "md" | "lg" | "xl";
 };
 
-const InputLabel = ({
+export const InputLabel = ({
 	labelName = "email",
 	iconInfo = true,
+	size = "md",
 }: InputLabelProps) => {
 	const iconInfoStyles: CSSProperties = iconInfo
 		? { display: "block" }
 		: { display: "none" };
 
+	const sizeStyles: Record<
+		NonNullable<InputLabelProps["size"]>,
+		CSSProperties
+	> = {
+		sm: {
+			fontSize: "12px",
+		},
+		md: {
+			fontSize: "12px",
+		},
+		lg: {
+			fontSize: "14px",
+		},
+		xl: {
+			fontSize: "14px",
+		},
+	};
+
 	return (
 		<div className={styles.wrapper}>
-			<label>{labelName}</label>
+			<label style={{ ...sizeStyles[size] }}>{labelName}</label>
 			{iconInfo && (
 				<div className={styles.icon__wrapper}>
 					<img src={infoImage} alt="info" style={{ ...iconInfoStyles }} />
@@ -28,5 +48,3 @@ const InputLabel = ({
 		</div>
 	);
 };
-
-export default InputLabel;
