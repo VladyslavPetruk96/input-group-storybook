@@ -8,7 +8,7 @@ input {
 	width: 100%;
 	border-radius: 4px;
 	box-sizing: border-box;
-	border-width: 1px;
+	padding-left: 12px;
 }
 input::placeholder {
 	color: #70707b;
@@ -31,17 +31,33 @@ input.error:hover,
 input:disabled::placeholder {
 	color: #d1d1d6;
 }
-.icon {
+/* .icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+} */
+.wrapper__icons__right {
+	right: 12px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	gap: 10px;
+}
+.search__icon {
+	left: 12px;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 }
 .help__icon {
-	left: 12px;
+	/* right: 52px; */
+	position: relative;
 }
-.search__icon {
-	right: 54px;
-}
-.shortkey__icon {
+/* .help__icon.no__shortkey {
 	right: 12px;
+} */
+.shortkey__icon {
+	/* right: 12px; */
+	position: relative;
 }

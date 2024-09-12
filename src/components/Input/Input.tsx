@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode, useState } from "react";
+import { ChangeEvent, CSSProperties, ReactNode, useState } from "react";
 import helpIcon from "../../assets/help.svg";
 import searchIcon from "../../assets/search.svg";
 import shortkeyIcon from "../../assets/shortkey.svg";
@@ -12,8 +12,8 @@ type InputProps = {
 	iconAfter?: ReactNode;
 	shortkey?: ReactNode;
 	placeholder?: string;
-	// onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-	// inputValue: string;
+	onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+	inputValue: string;
 };
 
 export const Input = ({
@@ -24,9 +24,9 @@ export const Input = ({
 	iconAfter = true,
 	shortkey = true,
 	placeholder = "Input...",
-}: // onChange,
-// inputValue,
-InputProps) => {
+	onChange,
+	inputValue,
+}: InputProps) => {
 	const [disabled, setDisabled] = useState(false);
 	const [error, setError] = useState(false);
 
@@ -34,22 +34,22 @@ InputProps) => {
 		sm: {
 			lineHeight: "20px",
 			fontSize: "12px",
-			padding: "2px 12px",
+			padding: `${iconBefore ? "2px 70px 2px 34px" : "2px 12px"}`,
 		},
 		md: {
 			lineHeight: "20px",
 			fontSize: "12px",
-			padding: "8px 12px",
+			padding: `${iconBefore ? "8px 70px 8px 34px" : "8px 12px"}`,
 		},
 		lg: {
 			lineHeight: "24px",
 			fontSize: "14px",
-			padding: "8px 12px",
+			padding: `${iconBefore ? "8px 70px 8px 34px" : "8px 12px"}`,
 		},
 		xl: {
 			lineHeight: "24px",
 			fontSize: "14px",
-			padding: "12px 12px",
+			padding: `${iconBefore ? "12px 70px 12px 34px" : "12px"}`,
 		},
 	};
 
@@ -85,8 +85,8 @@ InputProps) => {
 		<div className={styles.wrapper}>
 			<input
 				type="text"
-				// onChange={onChange}
-				// value={value}
+				onChange={onChange}
+				value={inputValue}
 				disabled={disabled}
 				className={`${styles.input} ${error ? styles.error : ""} ${
 					disabled ? styles.disabled : ""
@@ -100,28 +100,33 @@ InputProps) => {
 			/>
 			{iconBefore && (
 				<img
-					src={helpIcon}
-					className={`${styles.icon} ${styles.help__icon}`}
-					alt="help"
-					style={{ ...iconBeforeStyles }}
-				/>
-			)}
-			{iconAfter && (
-				<img
 					src={searchIcon}
 					className={`${styles.icon} ${styles.search__icon}`}
 					alt="search"
-					style={{ ...iconAfterStyles }}
+					style={{ ...iconBeforeStyles }}
 				/>
 			)}
-			{shortkey && (
-				<img
-					src={shortkeyIcon}
-					className={`${styles.icon} ${styles.shortkey__icon}`}
-					alt="shortkey"
-					style={{ ...shortkeyStyles }}
-				/>
-			)}
+			<div className={`${styles.wrapper__icons__right}`}>
+				{iconAfter && (
+					<img
+						src={helpIcon}
+						className={`${styles.icon} ${styles.help__icon} ${
+							shortkey ? "" : styles.no__shortkey
+						}`}
+						alt="help"
+						style={{ ...iconAfterStyles }}
+					/>
+				)}
+
+				{shortkey && (
+					<img
+						src={shortkeyIcon}
+						className={`${styles.icon} ${styles.shortkey__icon}`}
+						alt="shortkey"
+						style={{ ...shortkeyStyles }}
+					/>
+				)}
+			</div>
 		</div>
 	);
 };
