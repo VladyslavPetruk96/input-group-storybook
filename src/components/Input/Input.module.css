@@ -26,16 +26,12 @@ input.error:hover,
 	border-color: #fda29b;
 }
 .error:focus {
+	border-color: #fda29b;
 	box-shadow: 0px 0px 0px 4px #f044383d;
 }
 input:disabled::placeholder {
 	color: #d1d1d6;
 }
-/* .icon {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-} */
 .wrapper__icons__right {
 	right: 12px;
 	position: absolute;
@@ -44,20 +40,18 @@ input:disabled::placeholder {
 	display: flex;
 	gap: 10px;
 }
+
 .search__icon {
 	left: 12px;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 }
+
 .help__icon {
-	/* right: 52px; */
 	position: relative;
 }
-/* .help__icon.no__shortkey {
-	right: 12px;
-} */
+
 .shortkey__icon {
-	/* right: 12px; */
 	position: relative;
 }

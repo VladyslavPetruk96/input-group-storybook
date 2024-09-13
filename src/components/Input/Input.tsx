@@ -1,6 +1,8 @@
-import { CSSProperties, ReactNode, useState } from "react";
+import { CSSProperties, ReactNode } from "react";
 import helpIcon from "../../assets/help.svg";
+import helpError from "../../assets/helpError.svg";
 import searchIcon from "../../assets/search.svg";
+import searchError from "../../assets/searchError.svg";
 import shortkeyIcon from "../../assets/shortkey.svg";
 import styles from "./Input.module.css";
 
@@ -12,8 +14,10 @@ type InputProps = {
 	iconAfter?: ReactNode;
 	shortkey?: ReactNode;
 	placeholder?: string;
-	onChange: (value: string) => void;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	inputValue: string;
+	error: boolean;
+	disabled: boolean;
 };
 
 export const Input = ({
@@ -24,16 +28,11 @@ export const Input = ({
 	iconAfter = true,
 	shortkey = true,
 	placeholder = "Input...",
+	error,
 	onChange,
 	inputValue,
+	disabled,
 }: InputProps) => {
-	const [disabled, setDisabled] = useState(false);
-	const [error, setError] = useState(false);
-
-	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		onChange(event.target.value);
-	};
-
 	const sizeStyles: Record<NonNullable<InputProps["size"]>, CSSProperties> = {
 		sm: {
 			lineHeight: "20px",
@@ -89,7 +88,7 @@ export const Input = ({
 		<div className={styles.wrapper}>
 			<input
 				type="text"
-				onChange={handleChange}
+				onChange={onChange}
 				value={inputValue}
 				disabled={disabled}
 				className={`${styles.input} ${error ? styles.error : ""} ${
@@ -104,7 +103,7 @@ export const Input = ({
 			/>
 			{iconBefore && (
 				<img
-					src={searchIcon}
+					src={!error ? searchIcon : searchError}
 					className={`${styles.icon} ${styles.search__icon}`}
 					alt="search"
 					style={{ ...iconBeforeStyles }}
@@ -113,7 +112,7 @@ export const Input = ({
 			<div className={`${styles.wrapper__icons__right}`}>
 				{iconAfter && (
 					<img
-						src={helpIcon}
+						src={!error ? helpIcon : helpError}
 						className={`${styles.icon} ${styles.help__icon} ${
 							shortkey ? "" : styles.no__shortkey
 						}`}
